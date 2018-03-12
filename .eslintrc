@@ -1,0 +1,35 @@
+{
+    "parser": "babel-eslint",
+    "plugins": [
+      "react"
+    ],
+    "rules": {
+        "linebreak-style":0,
+        "quotes": [
+          "error",
+          "single"
+        ],
+        "no-console": [
+           "error",
+           {
+             "allow": [
+               "warn",
+               "error"
+             ]
+           }
+         ],
+         "object-curly-spacing": [
+            "error", "always"
+        ],
+        "no-multi-spaces": 2,
+        "curly": [2, "multi-line"],
+         "new-parens": 2,
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/jsx-equals-spacing":[2, "always"],
+    },
+     "extends": ["airbnb"],
+     "globals": {
+       "window": true,
+       "document": true,
+       },
+}
