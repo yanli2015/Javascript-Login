@@ -16,6 +16,7 @@
 }
 
 .container {
+  position: relative;
   padding-left: 45px;
   padding-right: 45px;
   padding-top: 10px;
@@ -53,27 +54,18 @@
 }
 
 .btnGroup{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  margin-top:100px;
+  position: absolute;
+  text-align: center;
   font-family:  "Roboto", "Helvetica";
+  bottom: 20px;
 }
 
 .loginBtn {
-  display: flex;
-  align-items: center;
   width:300px;
 
 }
 
 .BottomSpan {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  margin-top:10px;
   font-size: 15px;
   font-weight: 100;
   color: white;

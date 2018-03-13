@@ -20,7 +20,7 @@ class Login extends React.Component {
       name: '',
       password: '',
       pwdHelp:'',
-      unameHelp:'',
+      nameHelp:'',
       forgetPwd: false,
     };
   }
@@ -35,17 +35,18 @@ class Login extends React.Component {
   handleClick = () => {
     if(this.state.name === ""||this.state.name === null){
         this.setState({
-            unameHelp: "* User name couldn't be empty."
+            nameHelp: "* User name couldn't be empty.",
+            pwdHelp: ""
         })
     }else if(this.state.password === ""||this.state.password === null){
         this.setState({
-            unameHelp: "",
-            upwdHelp: "* Password couldn't be empty."
+            nameHelp: "",
+            pwdHelp: "* Password couldn't be empty."
         })
     }else{
         this.setState({
-            unameHelp: "",
-            upwdHelp: ""
+            nameHelp: "",
+            pwdHelp: ""
         });
         // console.log(this.state);
         axios.post(
@@ -111,7 +112,7 @@ check
                   At least three characters.
                 </FormHelperText>
            </FormControl>
-           <span className = {styles1.span}> {this.state.upwdHelp} </span>
+           <span className = {styles1.span}> {this.state.nameHelp} </span>
            <FormControl
               margin = "normal"
               fullWidth = { true } >
@@ -137,31 +138,32 @@ check
                   At least three numbers.
                 </FormHelperText>
             </FormControl>
-            <span className = {styles1.span}> {this.state.unameHelp} </span>
+            <span className = {styles1.span}> {this.state.pwdHelp} </span>
         </div>
-
         <div id= "btnGroup" className= { styles1.btnGroup }>
-          <div className = { styles1.loginBtn }>
+            <div className = { styles1.loginBtn }>
+              <Button
+                variant = "raised"
+                color = "primary"
+                fullWidth = { true }
+                onClick={this.handleClick.bind(this,this.state.name,this.state.password)}>
+                Next
+              </Button>
+            </div>
             <Button
-              variant = "raised"
-              color = "primary"
-              fullWidth = { true }
-              onClick={this.handleClick.bind(this,this.state.name,this.state.password)}>
-              Next
+              style = { materialStyles.btnStyle }
+              component = { Link } to = "/register">
+              Register
             </Button>
-          </div>
-          <Button
-            style = { materialStyles.btnStyle }
-            component = { Link } to = "/register">
-            Register
-          </Button>
+            <div role = "button" >
+              <span className = { styles1.BottomSpan }>
+                  Forget password?
+              </span>
+            </div>
         </div>
 
-        <div role = "button" >
-          <span className = { styles1.BottomSpan }>
-              Forget password?
-          </span>
-        </div>
+
+
 
       </div>
     </div>

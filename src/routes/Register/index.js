@@ -18,10 +18,12 @@ class Register extends React.Component {
     this.state = {
       name: '',
       password: '',
-      pwdHelp:'',
-      unameHelp:'',
       gender:'',
       age: '',
+      pwdHelp:'',
+      nameHelp:'',
+      genderHelp:'',
+      ageHelp:''
     };
   }
 
@@ -32,6 +34,35 @@ class Register extends React.Component {
    }
 
   handleSubmit (e) {
+    if (this.state.name === '' || this.state.name === null){
+      this.setState ({
+        nameHelp: "* User name couldn't be empty.",
+        pwdHelp:'',
+        genderHelp:'',
+        ageHelp:''
+      })
+    } else if ( this.state.password === '' || this.state.password === null){
+      this.setState({
+        pwdHelp :"* Password couldn't be empty.",
+        nameHelp: "",
+        genderHelp:'',
+        ageHelp:''
+      })
+    } else if (this.state.gender === '' || this.state.gender === null){
+      this.setState({
+        genderHelp: "* Gender couldn't be empty.",
+        pwdHelp :"",
+        nameHelp: "",
+        ageHelp:''
+      })
+    } else if (this.state.age === '' || this.state.age === null) {
+      this.setState({
+        ageHelp: "* Age couldn't be empty.",
+        genderHelp: "",
+        pwdHelp :"",
+        nameHelp: "",
+      })
+    }
     axios.post(
       "http://localhost:1000/addPerson", {
       name: this.state.name,
@@ -93,6 +124,7 @@ class Register extends React.Component {
                   At least three characters.
                 </FormHelperText>
            </FormControl>
+           <span className = {styles1.span}> {this.state.nameHelp} </span>
            <FormControl
               margin = "normal"
               fullWidth = { true } >
@@ -118,6 +150,7 @@ class Register extends React.Component {
                   At least three numbers.
                 </FormHelperText>
             </FormControl>
+            <span className = {styles1.span}> {this.state.pwdHelp} </span>
             <FormControl
                margin = "normal"
                fullWidth = { true } >
@@ -143,6 +176,7 @@ class Register extends React.Component {
                    Femal or male?
                  </FormHelperText>
              </FormControl>
+             <span className = {styles1.span}> {this.state.genderHelp} </span>
              <FormControl
                 margin = "normal"
                 fullWidth = { true } >
@@ -168,6 +202,7 @@ class Register extends React.Component {
                     Please enter your age.
                   </FormHelperText>
               </FormControl>
+              <span className = {styles1.span}> {this.state.ageHelp} </span>
 
         </div>
 
@@ -177,6 +212,7 @@ class Register extends React.Component {
               variant = "raised"
               color = "primary"
               onClick = { (e) => this.handleSubmit(e) }
+              // onClick = { (e) => this.securityQuestion(e)}
               fullWidth = { true }>
               Next
             </Button>
