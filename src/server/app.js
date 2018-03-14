@@ -61,6 +61,17 @@ app.post('/addPerson', (req, res, next) => {
   });
 });
 
+app.get('/countAge', (req, res, next) => {
+  var sql  = "SELECT test.persons.Age, count(*) num FROM test.persons  group by test.persons.Age;";
+  db.query(sql, function(err, result){
+    if(err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
 app.listen(1000, () => {
   console.log(`Server listening on port 1000!`);
 });

@@ -77,7 +77,6 @@ class Login extends React.Component {
 
   };
 
-check
   render() {
     return (
       <div id = "frame" className = { styles1.frame }>
@@ -161,10 +160,6 @@ check
               </span>
             </div>
         </div>
-
-
-
-
       </div>
     </div>
   );
